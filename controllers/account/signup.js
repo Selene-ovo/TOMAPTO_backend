@@ -2,7 +2,7 @@
 const express = require("express");
 const crypto = require("crypto"); // SHA-256 해시를 위한 내장 모듈
 const router = express.Router();
-const db = require("../db.js");
+const db = require("../../db.js");
 
 // SHA-256 해시 함수
 function sha256Hash(password) {

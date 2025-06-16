@@ -39,11 +39,11 @@ router.post("/", authenticateToken, async (req, res) => {
     console.log("로그아웃 요청 받음:", userId);
 
     // 위치 공유 비활성화 - 로그아웃 시 모든 공유 관계 종료 (추가된 부분)
-    const deactivateSQL = `
-      UPDATE LocationSharing
-      SET status = 'inactive', end_time = NOW(), updated_at = NOW()
-      WHERE sharer_id = ? AND status = 'active'
-    `;
+      const deactivateSQL = `
+        UPDATE LocationSharing
+        SET status = 'inactive', end_time = NOW()
+        WHERE sharer_id = ? AND status = 'active'
+      `;
 
     try {
       await db.promise().query(deactivateSQL, [userId]);
